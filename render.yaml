@@ -1,0 +1,18 @@
+databases:
+  - name: PostgreSQL-single_page_application_api_development
+    databaseName: single_page_application_api_development
+    user: single_page_application_api_development_user
+
+services:
+  - type: web
+    name: single_page_application_api
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: single_page_application_api
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false

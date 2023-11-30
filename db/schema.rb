@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_25_173018) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "adminpack"
   enable_extension "plpgsql"
 
   create_table "input_data", force: :cascade do |t|
